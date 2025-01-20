@@ -52,7 +52,7 @@ class WaymoDataset:
         for type in self.types:
             mask_gt += (gt_names == type)
 
-        mask_gt = mask_gt.astype(np.bool)
+        mask_gt = mask_gt.astype(np.bool_)
 
         gt_boxes = gt_boxes[mask_gt]
         gt_names = gt_names[mask_gt]
@@ -72,7 +72,7 @@ class WaymoDataset:
             for type in self.types:
                 mask_pred += (pred_names==type)
 
-            mask_pred = mask_pred.astype(np.bool)
+            mask_pred = mask_pred.astype(np.bool_)
 
             pred_boxes = pred_boxes[mask_pred]
             pred_scores = pred_scores[mask_pred]

@@ -113,6 +113,7 @@ class Viewer:
             colors = generate_scatter_colors(scatter_filed,color_map_name=color_map_name)#设定rgb颜色
         else:
             colors = color
+        # print("colors: ",colors)
 
         if add_to_2D_scene:   #进这里
             self.points_info.append((points,colors))#添加进队列，xyz和RGB
@@ -352,7 +353,7 @@ class Viewer:
                 new_car.scale((0.12, 0.3, 0.3))
 
                 new_car.scale(size)
-                new_car.rotateZ(ang)
+                new_car.rotate_z(ang)
                 new_car.pos(bb[0], bb[1], bb[2])
 
                 new_car.c(color)
@@ -444,8 +445,8 @@ class Viewer:
                     x = np.clip(x, 2, W-2)
                     y = np.clip(y, 2, H-2)
 
-                    x = x.astype(np.int)
-                    y = y.astype(np.int)
+                    x = x.astype(np.int_)
+                    y = y.astype(np.int_)
 
                     self.image[y, x] = color
 
@@ -490,8 +491,8 @@ class Viewer:
                 x = np.clip(x, 2, W - 2)
                 y = np.clip(y, 2, H - 2)
 
-                x = x.astype(np.int)
-                y = y.astype(np.int)
+                x = x.astype(np.int_)
+                y = y.astype(np.int_)
                 self.image[0,0]=[0,0,0]
 
                 self.image[y, x] = color

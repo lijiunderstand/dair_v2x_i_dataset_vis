@@ -4,7 +4,8 @@ from dataset.dair_dataset import DairDetectionDataset
 import os
 import yaml
 
-def read_config(config_path='./config/config.yaml'):
+# def read_config(config_path='./config/config.yaml'):
+def read_config(config_path='/home/lijie/data/DAIR/dair_v2x_i_dataset_vis/config/config.yaml'):
     file = open(config_path, 'r', encoding="utf-8")
     #读取文件中的所有数据
     file_data = file.read()                 
@@ -26,13 +27,16 @@ def dair_viewer(config_data):
     for i in dataset.all_ids:
         #i='005346'
         P2, V2C, points, image, labels, label_names = dataset[i]
+        print("points:",points.shape)
+
 
         #mask = label_names=="Car"   #只显示Car
         #labels = labels[mask]           #labels是3dbounding box的7个值
         #label_names = label_names[mask] #是bounding box的类别
                                         #point是lidar的点
 
-        vi.add_points(points[:,:3],scatter_filed=points[:,2],color_map_name='viridis')#原始lidar点，添加到2d和3d场景队列。不涉及任何转换
+        # vi.add_points(points[:,:3],scatter_filed=points[:,2],color_map_name='viridis')#原始lidar点，添加到2d和3d场景队列。不涉及任何转换
+        vi.add_points(points[:, :3], color_map_name='viridis')  # 原始lidar点，添加到2d和3d场景队列。不涉及任何转换
         vi.add_3D_boxes(labels,box_info=label_names,)#转换bounding box到vtk格式的线段和顶点list,问题出在读取label时候xyz就不对了，angle和whl都对，我知道了，按double读取int就导致xyz错误了！！！
         vi.add_3D_cars(labels, box_info=label_names)#只是为了添加3d车辆，没什么用
         vi.add_image(image,deep_copy=False)#只是添加图片，没什么看的

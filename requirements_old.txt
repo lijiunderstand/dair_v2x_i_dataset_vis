@@ -1,0 +1,9 @@
+numpy==1.21.4
+vedo==2022.0.1
+vtk
+opencv-python==4.1.1.26
+matplotlib==3.4.3
+open3d==0.14.1
+pyyaml
+scipy
+pandas

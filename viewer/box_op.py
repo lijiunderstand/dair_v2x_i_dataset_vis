@@ -95,7 +95,8 @@ def get_mesh_boxes(boxes,colors="red",
         else:
             this_c = colors[i]
         vtk_box = Box(pos=(0, 0, 0), height=box[5], width=box[4], length=box[3], c=this_c, alpha=mesh_alpha)
-        vtk_box.rotateZ(new_angle)
+        # vtk_box.rotateZ(new_angle)
+        vtk_box.rotate_z(new_angle)
         vtk_box.pos(box[0], box[1], box[2])
 
         info = ""
@@ -110,8 +111,10 @@ def get_mesh_boxes(boxes,colors="red",
                             alpha=1,c=this_c,
                             font="Calco",
                             justify='left')
-            vtk_box._caption.SetBorder(False)
-            vtk_box._caption.SetLeader(False)
+            # vtk_box._caption.SetBorder(False)
+            if vtk_box._caption  is not None:
+                vtk_box._caption.SetBorder(False)
+                vtk_box._caption.SetLeader(False)
 
         vtk_boxes_list.append(vtk_box)
 
