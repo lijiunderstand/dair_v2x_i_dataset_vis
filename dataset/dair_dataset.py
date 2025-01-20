@@ -34,6 +34,7 @@ class DairDetectionDataset:
             self.label_path='/home/liuchenghua/Downloads/0428/data'
         
    
+
         # self.calib_path=os.path.join(self.root_path,"calib_originP23X3")
         self.calib_path=os.path.join(self.root_path,"calib")
         self.velo_path = os.path.join(self.root_path,"velodyne")     
